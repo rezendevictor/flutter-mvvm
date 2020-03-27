@@ -5,7 +5,6 @@ import 'package:mvvm/screens/screen_elements/text_display_element.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class Entry extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -14,15 +13,24 @@ class Entry extends StatelessWidget {
       appBar: AppBar(title: Text("MVVM")),
       body: ListView(
         children: <Widget>[
-              TextCard(titulo: "Tests", valor: 200),
-              TextCard(titulo: "Tests", valor: 200),
-              TextCard(titulo: "Tests", valor: 200),
-
+          Container(
+            margin: const EdgeInsets.all(10.0),
+            width: 400.0,
+            height: 400.0,
+            child: DonutPieChart(_createSampleData()),
+          ),
+          TextCard(titulo: "Tests", valor: 200),
+          TextCard(titulo: "Tests", valor: 200),
+          TextCard(titulo: "Tests", valor: 200),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_circle_outline,size: 55,),
+        backgroundColor: (Colors.deepPurpleAccent),
+
       ),
     );
   }
-
 
   static List<charts.Series<LinearSales, int>> _createSampleData() {
     final data = [

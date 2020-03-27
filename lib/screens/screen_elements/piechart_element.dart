@@ -7,12 +7,13 @@ class DonutPieChart extends StatelessWidget {
 
   DonutPieChart(this.seriesList, {this.animate});
 
+
   /// Creates a [PieChart] with sample data and no transition.
   factory DonutPieChart.withSampleData() {
     return new DonutPieChart(
       _createSampleData(),
       // Disable animations for image tests.
-      animate: false,
+      animate: true,
     );
   }
 
