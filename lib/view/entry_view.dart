@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mvvm/screens/screen_elements/piechart_element.dart';
-import 'package:mvvm/screens/screen_elements/text_display_element.dart';
+import 'package:mvvm/view/view_elements/drawer_element.dart';
+import 'package:mvvm/view/view_elements/piechart_element.dart';
+import 'package:mvvm/view/view_elements/text_display_element.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class Entry extends StatelessWidget {
@@ -11,6 +12,7 @@ class Entry extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text("MVVM")),
+      drawer: DrawerElement(),
       body: ListView(
         children: <Widget>[
           Container(

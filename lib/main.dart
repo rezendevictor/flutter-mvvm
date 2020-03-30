@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/screens/entry_screen.dart';
+import 'package:mvvm/view/entry_view.dart';
 
 void main() => runApp(MyApp());
 
