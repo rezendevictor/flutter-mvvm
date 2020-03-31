@@ -32,8 +32,6 @@ class Entry extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_circle_outline,size: 55,),
         backgroundColor: (Colors.deepPurpleAccent),
-
-
         onPressed:(){},
       ),
     );

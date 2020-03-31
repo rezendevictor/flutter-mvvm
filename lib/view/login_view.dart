@@ -15,6 +15,7 @@ class _SingupViewState extends State<LoginView> {
   final _formkey = GlobalKey<FormState>();
   final _controller = new LoginControler();
   var model = new SingupViewModel();
+  var preenchido = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,7 @@ class _SingupViewState extends State<LoginView> {
                           )),
                       validator: (value) {
                         if (value.isEmpty) {
+                          preenchido = false;
                           return "Nome Inválido";
                         }
                         return null;
@@ -69,6 +71,7 @@ class _SingupViewState extends State<LoginView> {
                           )),
                       validator: (value) {
                         if (value.isEmpty) {
+                          preenchido = false;
                           return "E-mail Inválido";
                         }
                         return null;
@@ -88,6 +91,7 @@ class _SingupViewState extends State<LoginView> {
                           )),
                       validator: (value) {
                         if (value.isEmpty) {
+                          preenchido = false;
                           return "Senha Inválido";
                         }
                         return null;
@@ -111,19 +115,21 @@ class _SingupViewState extends State<LoginView> {
                               if (_formkey.currentState.validate()) {
                                 _formkey.currentState.save();
                               }
-
-                              setState(() {
-                                _controller.create(model).then((data) {
-                                  setState(() {});
-                                  store.setUser(data.name, data.email, data.picture,data.token);
-                               Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                   builder: (context) => Entry(),
-                                 ),
-                               );
+                              if (preenchido) {
+                                setState(() {
+                                  _controller.create(model).then((data) {
+                                    setState(() {});
+                                    store.setUser(data.name, data.email,
+                                        data.picture, data.token);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Entry(),
+                                      ),
+                                    );
+                                  });
                                 });
-                              });
+                              }
                             },
                           ),
                   ),
