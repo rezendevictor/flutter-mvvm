@@ -29,6 +29,7 @@ dependencies:
   charts_flutter: any
   mobx: ^0.4.0
   flutter_mobx: ^0.3.4
+  provider: ^4.0.4
 
 dev_dependencies:
   flutter_test:

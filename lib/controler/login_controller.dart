@@ -9,7 +9,9 @@ class LoginControler {
   }
 
   Future<UserModel> create(SingupViewModel model) async {
+    model.busy = true;
     var user  = await repository.createAccount(model);
+    model.busy = false;
     return user;
 
   }

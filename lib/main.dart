@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/view/login_view.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,11 +9,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MVVM',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: MyHomePage(),
+    return MultiProvider(
+      providers: [
+        Provider<AppStore>.value(
+          value: AppStore(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'MVVM',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        home: MyHomePage(),
+      ),
     );
   }
 }
