@@ -15,7 +15,7 @@ class _SingupViewState extends State<LoginView> {
   final _formkey = GlobalKey<FormState>();
   final _controller = new LoginControler();
   var model = new SingupViewModel();
-  var preenchido = true;
+  var preenchido = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,7 @@ class _SingupViewState extends State<LoginView> {
                         return null;
                       },
                       onSaved: (val) {
+                        preenchido = true;
                         model.name = val;
                       }),
                   TextFormField(
@@ -77,6 +78,7 @@ class _SingupViewState extends State<LoginView> {
                         return null;
                       },
                       onSaved: (val) {
+                        preenchido = true;
                         model.email = val;
                       }),
                   TextFormField(
@@ -97,6 +99,7 @@ class _SingupViewState extends State<LoginView> {
                         return null;
                       },
                       onSaved: (val) {
+                        preenchido = true;
                         model.password = val;
                       }),
                   Padding(

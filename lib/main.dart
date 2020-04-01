@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/view/login_view.dart';
+import 'package:mvvm/view/transaction_view.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/stores/app.store.dart';
+import 'package:mvvm/view/transaction_view.dart';
 import 'package:mvvm/view/view_elements/drawer_element.dart';
 import 'package:mvvm/view/view_elements/piechart_element.dart';
 import 'package:mvvm/view/view_elements/text_display_element.dart';
@@ -32,7 +33,14 @@ class Entry extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_circle_outline,size: 55,),
         backgroundColor: (Colors.deepPurpleAccent),
-        onPressed:(){},
+        onPressed:(){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Transaction(),
+            ),
+          );
+        },
       ),
     );
   }

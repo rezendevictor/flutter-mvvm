@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:mvvm/model/ExpenseModel.dart';
 part 'app.store.g.dart';
 
 class AppStore = _AppStore with _$AppStore;
@@ -16,6 +17,14 @@ abstract class _AppStore  with Store{
   @observable
   String token = "";
 
+  @observable
+  final List<ExpenseModel> ExpenseData = [];
+
+  void addExpense(ExpenseModel novo){
+    this.ExpenseData.add(novo);
+  }
+
+
   @action
   void setUser(
     String pName,
@@ -28,4 +37,9 @@ abstract class _AppStore  with Store{
     email = pEmail;
     token = pToken;
   }
+
+
+
+
+
 }
