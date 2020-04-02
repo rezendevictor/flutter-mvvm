@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/controler/login_controller.dart';
@@ -40,68 +42,80 @@ class _SingupViewState extends State<LoginView> {
               key: _formkey,
               child: Column(
                 children: <Widget>[
-                  Text("Cadastro"),
-                  TextFormField(
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          labelText: "Nome",
-                          labelStyle: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          preenchido = false;
-                          return "Nome Inválido";
-                        }
-                        return null;
-                      },
-                      onSaved: (val) {
-                        preenchido = true;
-                        model.name = val;
-                      }),
-                  TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          labelText: "E-mail",
-                          labelStyle: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          preenchido = false;
-                          return "E-mail Inválido";
-                        }
-                        return null;
-                      },
-                      onSaved: (val) {
-                        preenchido = true;
-                        model.email = val;
-                      }),
-                  TextFormField(
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          labelText: "Senha",
-                          labelStyle: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          preenchido = false;
-                          return "Senha Inválido";
-                        }
-                        return null;
-                      },
-                      onSaved: (val) {
-                        preenchido = true;
-                        model.password = val;
-                      }),
+                  Text("Login"),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TextFormField(
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Nome",
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            preenchido = false;
+                            return "Nome Inválido";
+                          }
+                          return null;
+                        },
+                        onSaved: (val) {
+                          preenchido = true;
+                          model.name = val;
+                        }),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "E-mail",
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            preenchido = false;
+                            return "E-mail Inválido";
+                          }
+                          return null;
+                        },
+                        onSaved: (val) {
+                          preenchido = true;
+                          model.email = val;
+                        }),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TextFormField(
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Senha",
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            preenchido = false;
+                            return "Senha Inválido";
+                          }
+                          return null;
+                        },
+                        onSaved: (val) {
+                          preenchido = true;
+                          model.password = val;
+                        }),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(40.0),
                     child: model.busy
@@ -112,28 +126,36 @@ class _SingupViewState extends State<LoginView> {
                               ),
                             ),
                           )
-                        : RaisedButton(
-                            child: Text("Cadastrar"),
-                            onPressed: () {
-                              if (_formkey.currentState.validate()) {
-                                _formkey.currentState.save();
-                              }
-                              if (preenchido) {
-                                setState(() {
-                                  _controller.create(model).then((data) {
-                                    setState(() {});
-                                    store.setUser(data.name, data.email,
-                                        data.picture, data.token);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Entry(),
-                                      ),
-                                    );
+                        : Container(
+                            width: 200,
+                            height: 50,
+                            child: RaisedButton(
+                              color: Colors.deepPurpleAccent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(18.0)),
+                              child: Text("Cadastrar",textScaleFactor: 1.4,),
+                              onPressed: () {
+                                if (_formkey.currentState.validate()) {
+                                  _formkey.currentState.save();
+                                }
+                                if (preenchido) {
+                                  setState(() {
+                                    _controller.create(model).then((data) {
+                                      setState(() {});
+                                      store.setUser(data.name, data.email,
+                                          data.picture, data.token);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Entry(),
+                                        ),
+                                      );
+                                    });
                                   });
-                                });
-                              }
-                            },
+                                }
+                              },
+                            ),
                           ),
                   ),
                 ],

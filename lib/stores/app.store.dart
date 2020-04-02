@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:mvvm/model/ExpenseModel.dart';
+import 'package:mvvm/viewmodel/expenseaddition.viewmodel.dart';
 part 'app.store.g.dart';
 
 class AppStore = _AppStore with _$AppStore;
@@ -18,10 +19,15 @@ abstract class _AppStore  with Store{
   String token = "";
 
   @observable
-  final List<ExpenseModel> ExpenseData = [];
+  final List<ExpenseAddition> ExpenseData = [];
 
-  void addExpense(ExpenseModel novo){
+  void addExpense(ExpenseAddition novo){
     this.ExpenseData.add(novo);
+  }
+
+  List<ExpenseAddition> voltaLista(){
+    List<ExpenseAddition> Expense = this.ExpenseData;
+    return Expense;
   }
 
 
