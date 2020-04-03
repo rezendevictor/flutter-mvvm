@@ -31,7 +31,7 @@ class Entry extends StatelessWidget {
                 .voltaLista()
                 .isEmpty
                 ? DonutPieChart.withSampleData()
-                : DonutPieChart(data.graph()),
+                : DonutPieChart.withSampleData(),
           ),
           TextCard(icon:Icons.wb_incandescent,titulo: "Necessidades", valor: somador("NECESSIDADES", store.voltaLista())),
           TextCard(icon:Icons.monetization_on,titulo: "Quereres", valor: somador("QUERERES", store.voltaLista())),

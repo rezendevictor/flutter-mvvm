@@ -18,7 +18,7 @@ class ExpenseCard extends StatelessWidget {
         ),
         title: Text(infos.value),
         subtitle: Text(infos.title),
-        trailing: Text(infos.data.toString()),
+        trailing: Text(infos.type),
       ),
     );
   }
