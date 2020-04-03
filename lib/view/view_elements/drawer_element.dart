@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/stores/app.store.dart';
+import 'package:mvvm/viewmodel/expenseList_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class DrawerElement extends StatelessWidget {
@@ -11,13 +12,13 @@ class DrawerElement extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
+        children: <Widget>[
           Padding(
             padding: EdgeInsets.all(50),
           ),
           CircleAvatar(
             radius: 80,
-              backgroundImage:NetworkImage("placeholder.com/150"),
+            backgroundImage: NetworkImage("placeholder.com/150"),
             backgroundColor: Colors.amber,
             child: Text("Nome"),
           ),
@@ -33,11 +34,19 @@ class DrawerElement extends StatelessWidget {
             leading: Icon(Icons.account_balance),
             title: Text('Economias'),
           ),
+          ListTile(
+            leading: Icon(Icons.account_balance_wallet),
+            title: Text('Lista de Despesas'),
+            onTap: (){
+              Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context) => ExpenseList(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
-
   }
-
-
 }

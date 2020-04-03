@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/view/transaction_view.dart';
 import 'package:mvvm/view/view_elements/drawer_element.dart';
+import 'package:mvvm/view/view_elements/extractData_element.dart';
 import 'package:mvvm/view/view_elements/piechart_element.dart';
 import 'package:mvvm/view/view_elements/text_display_element.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:mvvm/viewmodel/expenseList_viewmodel.dart';
+import 'package:mvvm/viewmodel/expenseaddition.viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class Entry extends StatelessWidget {
@@ -13,6 +16,7 @@ class Entry extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     var store = Provider.of<AppStore>(context);
+    ExtractedData data = new ExtractedData(store.voltaLista());
 
     return Scaffold(
       appBar: AppBar(title: Text("MVVM")),
@@ -23,17 +27,24 @@ class Entry extends StatelessWidget {
             margin: const EdgeInsets.all(10.0),
             width: 400.0,
             height: 400.0,
-            child: DonutPieChart(_createSampleData()),
+            child: store
+                .voltaLista()
+                .isEmpty
+                ? DonutPieChart.withSampleData()
+                : DonutPieChart(data.graph()),
           ),
-          TextCard(titulo: "Necessidades", valor: 200),
-          TextCard(titulo: "Quereres", valor: 200),
-          TextCard(titulo: "Economias", valor: 200),
+          TextCard(icon:Icons.wb_incandescent,titulo: "Necessidades", valor: somador("NECESSIDADES", store.voltaLista())),
+          TextCard(icon:Icons.monetization_on,titulo: "Quereres", valor: somador("QUERERES", store.voltaLista())),
+          TextCard(icon:Icons.account_balance,titulo: "Economias", valor:somador("ECONOMIAS", store.voltaLista())),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_circle_outline,size: 55,),
+        child: Icon(
+          Icons.add_circle_outline,
+          size: 55,
+        ),
         backgroundColor: (Colors.deepPurpleAccent),
-        onPressed:(){
+        onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -45,28 +56,15 @@ class Entry extends StatelessWidget {
     );
   }
 
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
-    final data = [
-      new LinearSales(0, 100),
-      new LinearSales(1, 75),
-      new LinearSales(2, 25),
-      new LinearSales(3, 5),
-    ];
+  double somador(String nome, List<ExpenseAddition> lista){
+    double resultado = 0;
+    for(ExpenseAddition x in lista ){
+      if(x.type == nome){
+        resultado += double.parse(x.value);
+      }
+    }
+    return resultado;
 
-    return [
-      new charts.Series<LinearSales, int>(
-        id: 'Sales',
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-        data: data,
-      )
-    ];
   }
-}
 
-class LinearSales {
-  final int year;
-  final int sales;
-
-  LinearSales(this.year, this.sales);
 }

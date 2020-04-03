@@ -114,6 +114,7 @@ class _TransactionState extends State<Transaction> {
                           ),
                           onChanged: (String data) {
                             setState(() {
+                              selected = data;
                               nTransaction.type = data;
                             });
                           },

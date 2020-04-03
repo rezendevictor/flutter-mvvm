@@ -24,6 +24,7 @@ class _ExpenseListState extends State<ExpenseList> {
     }
 
     return Scaffold(
+      appBar: AppBar(title: Text("Lista Despesas")),
       body: ListView.builder(
         itemCount: cardWidget.length,
           itemBuilder: (context,index){

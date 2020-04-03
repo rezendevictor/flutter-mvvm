@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class TextCard extends StatelessWidget {
   final String titulo;
   final double valor;
