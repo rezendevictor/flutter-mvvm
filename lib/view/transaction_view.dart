@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:mvvm/model/ExpenseModel.dart';
 import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/view/view_elements/formFields_element.dart';
@@ -27,6 +28,8 @@ class _TransactionState extends State<Transaction> {
     "QUERERES",
     "ENCONOMIAS",
   ];
+  String texto_data = "vazio";
+
   @override
   Widget build(BuildContext context) {
     var store = Provider.of<AppStore>(context);
@@ -96,6 +99,53 @@ class _TransactionState extends State<Transaction> {
                           },
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Selecione a data:",
+                          textScaleFactor: 1.4,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
+                        child: ButtonTheme(
+                          height: 60,
+                          minWidth: 150,
+                          child: OutlineButton(
+                              borderSide: BorderSide(
+                                color: Colors.grey, //Color of the border
+                                style: BorderStyle.solid, //Style of the border
+                                width: 0.8, //width of the border
+                              ),
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              onPressed: () {
+                                DatePicker.showDatePicker(context,
+                                    showTitleActions: true,
+                                    minTime: DateTime(2000, 1, 1),
+                                    onConfirm: (date) {
+                                  setState(() {
+                                    texto_data =
+                                        ' ${date.day} / ${date.month} / ${date.year} ';
+                                    nTransaction.data = date;
+                                    preenchido = true;
+                                  });
+                                },
+                                    currentTime: DateTime.now(),
+                                    locale: LocaleType.pt);
+                              },
+                              child: texto_data == "vazio"
+                                  ? Text(
+                                      "Data",
+                                      textScaleFactor: 1.4,
+                                    )
+                                  : Text(
+                                      texto_data,
+                                      textScaleFactor: 1.4,
+                                    )),
+                        ),
+                      ),
 
                       Column(children: <Widget>[
                         DropdownButton<String>(
@@ -128,6 +178,7 @@ class _TransactionState extends State<Transaction> {
                         ),
                       ]),
                       //Seleciona a categoria ou o se é Income
+
                       Padding(
                         padding: const EdgeInsets.all(30.0),
                         child: ButtonTheme(

@@ -30,6 +30,10 @@ dependencies:
   mobx: ^0.4.0
   flutter_mobx: ^0.3.4
   provider: ^4.0.4
+  flutter_datetime_picker: ^1.2.5
+  firebase_auth: ^0.15.5+3
+  google_sign_in: ^4.4.0
+
 
 dev_dependencies:
   flutter_test:

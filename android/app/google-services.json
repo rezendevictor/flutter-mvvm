@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "341057400268",
+    "firebase_url": "https://financial-d05b4.firebaseio.com",
+    "project_id": "financial-d05b4",
+    "storage_bucket": "financial-d05b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341057400268:android:e3f4a7bc8d5f5796ea8169",
+        "android_client_info": {
+          "package_name": "io.flutter.app.FlutterApplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341057400268-r79jbl9t3mjltmclomag5rpglvicj9k9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.flutter.app.FlutterApplication",
+            "certificate_hash": "c64c73333de017a7b1d836718b513c67c516d182"
+          }
+        },
+        {
+          "client_id": "341057400268-t9gjf7j4591vo2juertk4t7rjguuqt0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCPnHoVyQd7tnbTK-gcVDoXqeFX_QxbrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341057400268-t9gjf7j4591vo2juertk4t7rjguuqt0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

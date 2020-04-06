@@ -10,8 +10,12 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:mvvm/viewmodel/expenseList_viewmodel.dart';
 import 'package:mvvm/viewmodel/expenseaddition.viewmodel.dart';
 import 'package:provider/provider.dart';
+class Entry extends StatefulWidget {
+  @override
+  _EntryState createState() => _EntryState();
+}
 
-class Entry extends StatelessWidget {
+class _EntryState extends State<Entry> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

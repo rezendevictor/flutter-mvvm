@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/controler/login_controller.dart';
+import 'package:mvvm/repositories/login_repository.dart';
 import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/view/entry_view.dart';
 import 'package:mvvm/viewmodel/singup_viewmodel.dart';
@@ -126,36 +125,69 @@ class _SingupViewState extends State<LoginView> {
                               ),
                             ),
                           )
-                        : Container(
-                            width: 200,
-                            height: 50,
-                            child: RaisedButton(
-                              color: Colors.deepPurpleAccent,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(18.0)),
-                              child: Text("Cadastrar",textScaleFactor: 1.4,),
-                              onPressed: () {
-                                if (_formkey.currentState.validate()) {
-                                  _formkey.currentState.save();
-                                }
-                                if (preenchido) {
-                                  setState(() {
-                                    _controller.create(model).then((data) {
-                                      setState(() {});
-                                      store.setUser(data.name, data.email,
-                                          data.picture, data.token);
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Entry(),
-                                        ),
-                                      );
-                                    });
-                                  });
-                                }
-                              },
-                            ),
+                        : Column(
+                            children: <Widget>[
+                              Container(
+                                width: 200,
+                                height: 50,
+                                child: RaisedButton(
+                                  color: Colors.deepPurpleAccent,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(18.0)),
+                                  child: Text(
+                                    "Cadastrar",
+                                    textScaleFactor: 1.4,
+                                  ),
+                                  onPressed: () {
+                                    if (_formkey.currentState.validate()) {
+                                      _formkey.currentState.save();
+                                    }
+                                    if (preenchido) {
+                                      setState(() {
+                                        _controller.create(model).then((data) {
+                                          setState(() {});
+                                          store.setUser(data.name, data.email,
+                                              data.picture, data.token);
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Entry(),
+                                            ),
+                                          );
+                                        });
+                                      });
+                                    }
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: RaisedButton(
+                                    color: Colors.deepPurpleAccent,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(18.0)),
+                                    child: Text(
+                                      "Login com Google",
+                                      textScaleFactor: 1.4,
+                                    ),
+                                    onPressed: () {
+                                      signInWithGoogle().whenComplete(() {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => Entry(),
+                                          ),
+                                        );
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                   ),
                 ],
