@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mvvm/repositories/login_repository.dart';
 import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/viewmodel/expenseList_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +19,12 @@ class DrawerElement extends StatelessWidget {
           ),
           CircleAvatar(
             radius: 80,
-            backgroundImage: NetworkImage("placeholder.com/150"),
-            backgroundColor: Colors.amber,
-            child: Text("Nome"),
+            backgroundImage: NetworkImage(store.user.photoUrl),
+            backgroundColor: Colors.transparent,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(store.user.displayName),
           ),
           ListTile(
             leading: Icon(Icons.wb_incandescent),

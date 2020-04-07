@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
 import 'package:mvvm/model/ExpenseModel.dart';
 import 'package:mvvm/viewmodel/expenseaddition.viewmodel.dart';
@@ -20,6 +21,12 @@ abstract class _AppStore  with Store{
 
   @observable
   final List<ExpenseAddition> ExpenseData = [];
+
+  FirebaseUser user;
+
+  void setFirebaseUser(FirebaseUser user2){
+    this.user = user2;
+  }
 
   void addExpense(ExpenseAddition novo){
     this.ExpenseData.add(novo);

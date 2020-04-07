@@ -119,76 +119,79 @@ class _SingupViewState extends State<LoginView> {
                     padding: const EdgeInsets.all(40.0),
                     child: model.busy
                         ? Center(
-                            child: Container(
-                              child: CircularProgressIndicator(
-                                backgroundColor: Colors.black,
-                              ),
-                            ),
-                          )
+                      child: Container(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.black,
+                        ),
+                      ),
+                    )
                         : Column(
-                            children: <Widget>[
-                              Container(
-                                width: 200,
-                                height: 50,
-                                child: RaisedButton(
-                                  color: Colors.deepPurpleAccent,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(18.0)),
-                                  child: Text(
-                                    "Cadastrar",
-                                    textScaleFactor: 1.4,
-                                  ),
-                                  onPressed: () {
-                                    if (_formkey.currentState.validate()) {
-                                      _formkey.currentState.save();
-                                    }
-                                    if (preenchido) {
-                                      setState(() {
-                                        _controller.create(model).then((data) {
-                                          setState(() {});
-                                          store.setUser(data.name, data.email,
-                                              data.picture, data.token);
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => Entry(),
-                                            ),
-                                          );
-                                        });
-                                      });
-                                    }
-                                  },
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Container(
-                                  width: 200,
-                                  height: 50,
-                                  child: RaisedButton(
-                                    color: Colors.deepPurpleAccent,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(18.0)),
-                                    child: Text(
-                                      "Login com Google",
-                                      textScaleFactor: 1.4,
-                                    ),
-                                    onPressed: () {
-                                      signInWithGoogle().whenComplete(() {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => Entry(),
-                                          ),
-                                        );
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
+                      children: <Widget>[
+                        Container(
+                          width: 200,
+                          height: 50,
+                          child: RaisedButton(
+                            color: Colors.deepPurpleAccent,
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                new BorderRadius.circular(18.0)),
+                            child: Text(
+                              "Cadastrar",
+                              textScaleFactor: 1.4,
+                            ),
+                            onPressed: () {
+                              if (_formkey.currentState.validate()) {
+                                _formkey.currentState.save();
+                              }
+                              if (preenchido) {
+                                setState(() {
+                                  _controller.create(model).then((data) {
+                                    setState(() {});
+                                    store.setUser(data.name, data.email,
+                                        data.picture, data.token);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Entry(),
+                                      ),
+                                    );
+                                  });
+                                });
+                              }
+                            },
                           ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Container(
+                            width: 200,
+                            height: 50,
+                            child: RaisedButton(
+                              color: Colors.deepPurpleAccent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                  new BorderRadius.circular(18.0)),
+                              child: Text(
+                                "Login com Google",
+                                textScaleFactor: 1.4,
+                              ),
+                              onPressed: () {
+                                try {
+                                  signInWithGoogle(context).whenComplete(() {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context) {
+                                          return Entry();
+                                        }));
+                                  });
+                                }catch(err){
+                                  debugPrint(err);
+                                }
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
