@@ -23,7 +23,7 @@ class _EntryState extends State<Entry> {
     ExtractedData data = new ExtractedData(store.voltaLista());
 
     return Scaffold(
-      appBar: AppBar(title: Text("MVVM")),
+      appBar: AppBar(title: Text("Home")),
       drawer: DrawerElement(),
       body: ListView(
         children: <Widget>[
@@ -35,7 +35,7 @@ class _EntryState extends State<Entry> {
                 .voltaLista()
                 .isEmpty
                 ? DonutPieChart.withSampleData()
-                : DonutPieChart.withSampleData(),
+                : ExtractedData(store.voltaLista()),
           ),
           TextCard(icon:Icons.wb_incandescent,titulo: "Necessidades", valor: somador("NECESSIDADES", store.voltaLista())),
           TextCard(icon:Icons.monetization_on,titulo: "Quereres", valor: somador("QUERERES", store.voltaLista())),

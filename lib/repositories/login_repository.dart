@@ -4,7 +4,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mvvm/stores/app.store.dart';
 import 'package:provider/provider.dart';
 
-bool _isLoggedIn = false;
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 final FirebaseAuth _auth = FirebaseAuth.instance;

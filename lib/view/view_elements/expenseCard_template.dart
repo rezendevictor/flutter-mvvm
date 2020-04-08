@@ -16,7 +16,7 @@ class ExpenseCard extends StatelessWidget {
         leading: Icon(
           _SelectIcon(infos.type),
         ),
-        title: Text(infos.value),
+        title: Text("R\$ " + double.tryParse(infos.value).toStringAsFixed(2)),
         subtitle: Text(infos.title),
         trailing: Text(infos.type),
       ),

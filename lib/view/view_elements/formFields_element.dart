@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mvvm/model/ExpenseModel.dart';
 
 //Define o Titulo da Despesa
 class FormElement extends StatefulWidget {

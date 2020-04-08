@@ -202,7 +202,7 @@ class _TransactionState extends State<Transaction> {
                                   });
                                 }
 
-                                debugPrint(store.ExpenseData[0].title);
+                                debugPrint(store.expenseData[0].title);
                               },
                               child: Text("Adicionar")),
                         ),

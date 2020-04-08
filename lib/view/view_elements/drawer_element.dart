@@ -1,15 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mvvm/repositories/login_repository.dart';
-import 'package:mvvm/stores/app.store.dart';
 import 'package:mvvm/viewmodel/expenseList_viewmodel.dart';
-import 'package:provider/provider.dart';
 
 class DrawerElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    var store = Provider.of<AppStore>(context);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -19,12 +15,12 @@ class DrawerElement extends StatelessWidget {
           ),
           CircleAvatar(
             radius: 80,
-            backgroundImage: NetworkImage(store.user.photoUrl),
+            backgroundImage: NetworkImage("photoUrl"),
             backgroundColor: Colors.transparent,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(store.user.displayName),
+            child: Text("displayName"),
           ),
           ListTile(
             leading: Icon(Icons.wb_incandescent),

@@ -1,36 +1,55 @@
 import 'dart:core';
+import 'package:flutter/cupertino.dart';
 import 'package:mvvm/viewmodel/expenseaddition.viewmodel.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class ExtractedData {
-  List<ExpenseAddition> rawData;
-
+class ExtractedData extends StatelessWidget {
+  final List<ExpenseAddition> rawData;
   ExtractedData(this.rawData);
 
-  List<charts.Series<ChartData, int>> graph() {
-    return getData(rawData);
+  @override
+  Widget build(BuildContext context) {
+    return pieChart(Extrator(rawData));
   }
+
 
 }
 
-List<charts.Series<ChartData, int>> getData(List<ExpenseAddition> rawData) {
-  charts.Series<ChartData, int> chartDataList;
-  var data = [];
+List<charts.Series> Extrator(List<ExpenseAddition> rawData){
+  List<ChartData> listaConvertida = [];
   for (ExpenseAddition x in rawData) {
-    data.add(new ChartData(
+    listaConvertida.add(new ChartData(
       select(x.type),
-      double.parse(x.value),
+      double.tryParse(x.value),
     ));
   }
-  chartDataList = new charts.Series<ChartData, int>(
-    id: "Total",
-    data: data,
-    domainFn: (ChartData infos, _) => infos.type,
-    measureFn: (ChartData infos, _) => infos.type,
-  );
-  List<charts.Series<ChartData, int>> saida;
-  saida.add(chartDataList);
-  return saida;
+
+
+  return  [
+    new charts.Series<ChartData, int>(
+      id: 'Expenses',
+      domainFn: (ChartData data, _) => data.type,
+      measureFn: (ChartData data, _) =>data.value,
+      data: listaConvertida,
+    )
+  ];;
+}
+
+// ignore: camel_case_types
+class pieChart extends StatelessWidget {
+  final List<charts.Series> seriesList;
+  final bool animate;
+
+  const pieChart(this.seriesList, {this.animate});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new charts.PieChart(seriesList,
+        animate: animate,
+        defaultRenderer: new charts.ArcRendererConfig(arcWidth: 60,
+        arcRendererDecorators: [new charts.ArcLabelDecorator()]));
+  }
 }
 
 int select(String categor) {

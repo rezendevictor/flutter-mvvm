@@ -2,16 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Spinner extends StatefulWidget {
-
-  var valorSel;
+  final valorSel;
   Spinner(this.valorSel);
   @override
   _SpinnerState createState() => _SpinnerState(valorSel);
-
 }
 
 class _SpinnerState extends State {
-
   var selected;
 
   _SpinnerState(this.selected);
