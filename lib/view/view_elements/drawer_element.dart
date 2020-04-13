@@ -16,37 +16,50 @@ class DrawerElement extends StatelessWidget {
           CircleAvatar(
             radius: 80,
             backgroundImage: NetworkImage("photoUrl"),
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.blueAccent,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("displayName"),
           ),
-          ListTile(
-            leading: Icon(Icons.wb_incandescent),
-            title: Text('Necessidades'),
-          ),
-          ListTile(
-            leading: Icon(Icons.monetization_on),
-            title: Text('Quereres'),
-          ),
-          ListTile(
-            leading: Icon(Icons.account_balance),
-            title: Text('Economias'),
-          ),
-          ListTile(
-            leading: Icon(Icons.account_balance_wallet),
-            title: Text('Lista de Despesas'),
-            onTap: (){
-              Navigator.push(context,
-                MaterialPageRoute(
-                  builder: (context) => ExpenseList(),
-                ),
-              );
-            },
-          ),
+          _placeHolder(),
+          _expensesAcess(context),
         ],
       ),
     );
   }
+
+  Widget _placeHolder() {
+    return Column(
+      children: <Widget>[
+        ListTile(
+          leading: Icon(Icons.wb_incandescent),
+          title: Text('Necessidades'),
+        ),
+        ListTile(
+          leading: Icon(Icons.monetization_on),
+          title: Text('Quereres'),
+        ),
+        ListTile(
+          leading: Icon(Icons.account_balance),
+          title: Text('Economias'),
+        ),
+      ],
+    );
+  }
+}
+
+Widget _expensesAcess(BuildContext context) {
+  return ListTile(
+    leading: Icon(Icons.account_balance_wallet),
+    title: Text('Lista de Despesas'),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ExpenseList(),
+        ),
+      );
+    },
+  );
 }
