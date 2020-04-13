@@ -1,6 +1,6 @@
 import 'package:mvvm/viewmodel/expenseaddition.viewmodel.dart';
-class toolbox {
 
+class Toolbox {
   static double somador(String nome, List<ExpenseAddition> lista) {
     double resultado = 0;
     for (ExpenseAddition x in lista) {
@@ -21,4 +21,16 @@ class toolbox {
     }
   }
 
+  static List<ExpenseAddition> filter(
+    List<ExpenseAddition> fullList,
+    String filter,
+  ) {
+    List<ExpenseAddition> filtered = [];
+    for (ExpenseAddition x in fullList) {
+      if (x.type == filter) {
+        filtered.add(x);
+      }
+    }
+    return filtered;
+  }
 }

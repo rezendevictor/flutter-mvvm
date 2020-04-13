@@ -10,7 +10,7 @@ class ExtractedData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return pieChart(Extrator(rawData));
+    return pieChart(extrator(rawData));
   }
 
   static Widget sample(){
@@ -20,11 +20,11 @@ class ExtractedData extends StatelessWidget {
 
 }
 
-List<charts.Series> Extrator(List<ExpenseAddition> rawData){
+List<charts.Series> extrator(List<ExpenseAddition> rawData){
   List<ChartData> listaConvertida = [];
   for (ExpenseAddition x in rawData) {
     listaConvertida.add(new ChartData(
-      toolbox.select(x.type),
+      Toolbox.select(x.type),
       double.tryParse(x.value),
     ));
   }
@@ -35,7 +35,7 @@ List<charts.Series> Extrator(List<ExpenseAddition> rawData){
       measureFn: (ChartData data, _) =>data.value,
       data: listaConvertida,
     )
-  ];;
+  ];
 }
 
 // ignore: camel_case_types

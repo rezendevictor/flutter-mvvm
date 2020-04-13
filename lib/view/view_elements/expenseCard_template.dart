@@ -14,7 +14,7 @@ class ExpenseCard extends StatelessWidget {
           RoundedRectangleBorder(borderRadius: new BorderRadius.circular(18.0)),
       child: ListTile(
         leading: Icon(
-          _SelectIcon(infos.type),
+          _selectIcon(infos.type),
         ),
         title: Text("R\$ " + double.tryParse(infos.value).toStringAsFixed(2)),
         subtitle: Text(infos.title),
@@ -24,7 +24,7 @@ class ExpenseCard extends StatelessWidget {
   }
 }
 
-IconData _SelectIcon(String tipo) {
+IconData _selectIcon(String tipo) {
   if (tipo == "NECESSIDADES") {
     return Icons.wb_incandescent;
   } else if (tipo == "QUERERES") {

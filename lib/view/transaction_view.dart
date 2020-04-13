@@ -28,7 +28,7 @@ class _TransactionState extends State<Transaction> {
     "QUERERES",
     "ENCONOMIAS",
   ];
-  String texto_data = "vazio";
+  String textoData = "vazio";
 
   @override
   Widget build(BuildContext context) {
@@ -150,19 +150,19 @@ class _TransactionState extends State<Transaction> {
                       showTitleActions: true,
                       minTime: DateTime(2000, 1, 1), onConfirm: (date) {
                     setState(() {
-                      texto_data = ' ${date.day} / ${date.month} / ${date.year} ';
+                      textoData = ' ${date.day} / ${date.month} / ${date.year} ';
                       nTransaction.data = date;
                       preenchido = true;
                     });
                   }, currentTime: DateTime.now(), locale: LocaleType.pt);
                 },
-                child: texto_data == "vazio"
+                child: textoData == "vazio"
                     ? Text(
                         "Data",
                         textScaleFactor: 1.4,
                       )
                     : Text(
-                        texto_data,
+                        textoData,
                         textScaleFactor: 1.4,
                       )),
           ),

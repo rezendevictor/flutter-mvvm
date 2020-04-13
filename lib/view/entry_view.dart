@@ -65,21 +65,21 @@ class _EntryState extends State<Entry> {
         TextCard(
             icon: Icons.wb_incandescent,
             titulo: "Necessidades",
-            valor: toolbox.somador(
+            valor: Toolbox.somador(
               "NECESSIDADES",
               store.voltaLista(),
             )),
         TextCard(
             icon: Icons.monetization_on,
             titulo: "Quereres",
-            valor: toolbox.somador(
+            valor: Toolbox.somador(
               "QUERERES",
               store.voltaLista(),
             )),
         TextCard(
             icon: Icons.account_balance,
             titulo: "Economias",
-            valor: toolbox.somador(
+            valor: Toolbox.somador(
               "ECONOMIAS",
               store.voltaLista(),
             )),
