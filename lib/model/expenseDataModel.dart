@@ -7,10 +7,10 @@ class ExpenseData {
   ExpenseData(this.valor, this.type);
 
   void create(String svalor,String stype){
-    double Ivalor = double.tryParse(svalor);
-    int Itype = int.tryParse(stype);
+    double ivalor = double.tryParse(svalor);
+    int itype = int.tryParse(stype);
 
-    ExpenseData(Ivalor, Itype);
+    ExpenseData(ivalor, itype);
 
   }
 }

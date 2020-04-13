@@ -11,7 +11,7 @@ class Transaction extends StatefulWidget {
 }
 
 class _TransactionState extends State<Transaction> {
-  bool preenchido = true;
+  bool preenchido = false;
 
   final _formkey = GlobalKey<FormState>();
 

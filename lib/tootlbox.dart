@@ -11,5 +11,14 @@ class toolbox {
     return resultado;
   }
 
+  static int select(String categor) {
+    if (categor == "NECESSIDADES") {
+      return 1;
+    } else if (categor == "QUERERES") {
+      return 2;
+    } else {
+      return 3;
+    }
+  }
 
 }

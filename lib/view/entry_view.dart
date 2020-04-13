@@ -5,7 +5,6 @@ import 'package:mvvm/tootlbox.dart';
 import 'package:mvvm/view/transaction_view.dart';
 import 'package:mvvm/view/view_elements/drawer_element.dart';
 import 'package:mvvm/view/view_elements/extractData_element.dart';
-import 'package:mvvm/view/view_elements/piechart_element.dart';
 import 'package:mvvm/view/view_elements/text_display_element.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +36,7 @@ class _EntryState extends State<Entry> {
       width: 400.0,
       height: 400.0,
       child: store.voltaLista().isEmpty
-          ? DonutPieChart.withSampleData()
+          ? ExtractedData.sample()
           : ExtractedData(store.voltaLista()),
     );
   }
